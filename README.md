@@ -1,55 +1,55 @@
-# RedisKeychain
+# RedisKeychain <a name="redis-keychain"></a>
 
 RedisKeychain is a Node.js library for streamlining the configuration and maintenance of your Redis namespace.
 
-## Features
+## Features <a name="features"></a>
 
 * template engine for key names;
 * expiry configuration utility;
 * key-to-client binding.
 
-Table of contents
+## Table of contents
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+*generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [RedisKeychain](#)
-    - [Features](#)
-    - [Installation](#)
-    - [Typical usage](#)
-        - [Configuration](#)
-        - [Instantiation](#)
-        - [Usage](#)
-    - [Configuration options ](#)
-        - [Clients ](#)
-        - [Expiries ](#)
-    - [Fields ](#)
-        - [type](#)
-        - [auto](#)
-        - [process](#)
-        - [validate](#)
-    - [Keys](#)
-        - [name](#)
-        - [type](#)
-        - [fields ](#)
-        - [expiry ](#)
-            - [Refresh ](#)
-        - [client](#)
-        - [Key#render ](#)
-        - [Key#send() ](#)
-    - [Running tests](#)
-    - [License](#)
+- [RedisKeychain](#redis-keychain)
+    - [Features](#features)
+    - [Installation](#installation)
+    - [Typical usage](#typical-usage)
+        - [Configuration](#configuration)
+        - [Instantiation](#instantiation)
+        - [Usage](#usage)
+    - [Configuration options ](#configuration-options)
+        - [Clients ](#configuration-options-clients)
+        - [Expiries ](#configuration-options-expiries)
+        - [Fields ](#configuration-options-fields)
+            - [type](#fields-type)
+            - [auto](#fields-auto)
+            - [process](#fields-process)
+            - [validate](#fields-validate)
+        - [Keys](#configuration-options-keys)
+            - [name](#key-name)
+            - [type](#key-type)
+            - [fields ](#key-fields)
+            - [expiry ](#key-expiry)
+                - [Refresh ](#key-expiry-refresh)
+            - [client](#key-client)
+            - [Key#render ](#key-render)
+            - [Key#send() ](#key-send)
+    - [Running tests](#running-tests)
+    - [License](#license)
 
-## Installation
+## Installation <a name="installation"></a>
 
 ```
 $ npm install node-redis-keychain
 ```
 
-## Typical usage
+## Typical usage <a name="typical-usage"></a>
 
 Typical usage involves defining a "configure" function and pass it as argument to the library's factory method `.forge()` in order to create a new instance of `RedisKeychain`.
 
-### Configuration
+### Configuration <a name="configuration"></a>
 
 In the following example, "configure" function is defined as a module in `./configure.js` for the sake of clarity.
 
@@ -112,7 +112,7 @@ module.exports = function configure(config) {
 
 More on configuration options [later](#configuration-options).
 
-### Instantiation
+### Instantiation <a name="instantiation"></a>
 
 In the following example, "configure" function module in `./configure.js` is passed to library's factory method, `.forge()`.
 
@@ -129,7 +129,7 @@ var
     keychain = RedisKeychain.forge(configure);
 ```
 
-### Usage
+### Usage <a name="usage"></a>
 
 ```javascript
 // centralize access to your Redis clients
@@ -381,13 +381,13 @@ Registering a global field to a `RedisKeychain` instance involves adding a name-
 
 where `value` is an object having at least one of the following properties: `type`, `auto`, `process`, `validate`.
 
-#### type
+#### type <a name="fields-type"></a>
 
 Optional. It enables type-checking against actual field values.
 
 It can be any value in `Boolean`, `Number`, `String`.
 
-#### auto
+#### auto <a name="fields-auto"></a>
 
 Required for global fields. Optional for key fields. It is an automatic value for the field.
 
@@ -395,13 +395,13 @@ It can be any value of type `Boolean`, `Function`, `Number`, `String`.
 
 If `auto` is of type `Function` then `auto()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send) to get the actual value.
 
-#### process
+#### process <a name="fields-process"></a>
 
 Specify `process` if you want to process values before validation and rendering; `process()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send).
 
 It must return a value of valid `type` and conforming to `validate()` constraints.
 
-#### validate
+#### validate <a name="fields-validate"></a>
 
 Specify `validate` if you want to perform further validation on field value; `validate()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send) and after `process()`.
 
@@ -409,7 +409,7 @@ It must return a `Boolean` value.
 
 You can use `validate` in conjunction with `type`.
 
-### Keys
+### Keys <a name="configuration-options-keys"></a>
 
 In the following example, a key is registered to a `RedisKeychain` instance.
 
@@ -447,7 +447,7 @@ Registering a key to a `RedisKeychain` instance involves adding an alias-value p
 
 where `value` is an object having at least `name` and `type` properties. Optional properties are `fields`, `expiry`, `client`.
 
-#### name
+#### name <a name="key-name"></a>
 
 Required. It is the name of the key in your Redis namespace.
 
@@ -463,7 +463,7 @@ Global fields are registered to a `RedisKeychain` instance adding an entry to th
 
 Key-scoped fields are implicitly registered if they appear in a key name and they are not already registered as global fields.
 
-#### type
+#### type <a name="key-type"></a>
 
 Required. It is the type of the key in your Redis namespace.
 
@@ -555,7 +555,7 @@ aKey.send().set('value', function (error, reply) {
 });
 ```
 
-#### client
+#### client <a name="key-client"></a>
 
 Optional. It is an alias to a client instance registered to the same `RedisKeychain` instance.
 
@@ -597,7 +597,7 @@ Key-to-client binding feature is library agnostic: you can use your Redis client
 
 Key-to-client binding feature has been tested using [node_redis](https://github.com/mranney/node_redis) and [ioredis](https://github.com/luin/ioredis).
 
-#### `Key#render` <a name="key-render"></a>
+#### `Key#render()` <a name="key-render"></a>
 
 Invoke `Key#render` to render a key name template. Arguments to `Key#render` can be a list of field values or a single `Object` argument having field-value pairs.
 
@@ -669,7 +669,7 @@ keychain.aKey.send('fieldValue').set('keyValue', function (error, reply) {
 
 You can also invoke the shorcut method `Key#s()`.
 
-## Running tests
+## Running tests <a name="running-tests"></a>
 
 The test suite is split into two parts: unit tests and command tests. The unit tests run on any machine while the command tests require a Redis server instance to be setup.
 
@@ -683,6 +683,6 @@ Run tests as follows
 $ npm test
 ```
 
-## License
+## License <a name="license"></a>
 
 The project is licensed under the MIT license.
