@@ -1,0 +1,25 @@
+{
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+
+        // possible errors
+        "no-empty": 2,
+
+        // best practices
+        "default-case": 2,
+
+        // strict mode
+        "strict": [ 2, "global" ],
+
+        // stylistic issues
+        "no-underscore-dangle": true,
+        "quotes": [ 2, "single" ],
+        "spaced-line-comment": [ 2, "always" ],
+        "space-unary-ops": 0,
+        "space-infix-ops": 0,
+        "no-use-before-define": true
+    }
+}
