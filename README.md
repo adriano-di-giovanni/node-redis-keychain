@@ -8,6 +8,37 @@ RedisKeychain is a Node.js library for streamlining the configuration and mainte
 * expiry configuration utility;
 * key-to-client binding.
 
+Table of contents
+
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [RedisKeychain](#)
+    - [Features](#)
+    - [Installation](#)
+    - [Typical usage](#)
+        - [Configuration](#)
+        - [Instantiation](#)
+        - [Usage](#)
+    - [Configuration options ](#)
+        - [Clients ](#)
+        - [Expiries ](#)
+    - [Fields ](#)
+        - [type](#)
+        - [auto](#)
+        - [process](#)
+        - [validate](#)
+    - [Keys](#)
+        - [name](#)
+        - [type](#)
+        - [fields ](#)
+        - [expiry ](#)
+            - [Refresh ](#)
+        - [client](#)
+        - [Key#render ](#)
+        - [Key#send() ](#)
+    - [Running tests](#)
+    - [License](#)
+
 ## Installation
 
 ```
@@ -298,7 +329,7 @@ You then access the expiry by alias:
 keychain.expiries.alias;
 ```
 
-## Fields <a name="configuration-options-fields"></a>
+### Fields <a name="configuration-options-fields"></a>
 
 Fields are placeholders in key names.
 
@@ -350,13 +381,13 @@ Registering a global field to a `RedisKeychain` instance involves adding a name-
 
 where `value` is an object having at least one of the following properties: `type`, `auto`, `process`, `validate`.
 
-### type
+#### type
 
 Optional. It enables type-checking against actual field values.
 
 It can be any value in `Boolean`, `Number`, `String`.
 
-### auto
+#### auto
 
 Required for global fields. Optional for key fields. It is an automatic value for the field.
 
@@ -364,13 +395,13 @@ It can be any value of type `Boolean`, `Function`, `Number`, `String`.
 
 If `auto` is of type `Function` then `auto()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send) to get the actual value.
 
-### process
+#### process
 
 Specify `process` if you want to process values before validation and rendering; `process()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send).
 
 It must return a value of valid `type` and conforming to `validate()` constraints.
 
-### validate
+#### validate
 
 Specify `validate` if you want to perform further validation on field value; `validate()` will be invoked upon [`Key#render()`](#key-render) or [`Key#send()`](#key-send) and after `process()`.
 
@@ -378,7 +409,7 @@ It must return a `Boolean` value.
 
 You can use `validate` in conjunction with `type`.
 
-## Keys
+### Keys
 
 In the following example, a key is registered to a `RedisKeychain` instance.
 
@@ -416,7 +447,7 @@ Registering a key to a `RedisKeychain` instance involves adding an alias-value p
 
 where `value` is an object having at least `name` and `type` properties. Optional properties are `fields`, `expiry`, `client`.
 
-### name
+#### name
 
 Required. It is the name of the key in your Redis namespace.
 
@@ -432,13 +463,13 @@ Global fields are registered to a `RedisKeychain` instance adding an entry to th
 
 Key-scoped fields are implicitly registered if they appear in a key name and they are not already registered as global fields.
 
-### type
+#### type
 
 Required. It is the type of the key in your Redis namespace.
 
 It can be any string value in `hash`, `hyperloglog`, `list`, `set`, `string`, `zset`.
 
-### fields <a name="key-fields"></a>
+#### fields <a name="key-fields"></a>
 
 Optional. Use `fields` to configure a key-scoped field.
 
@@ -472,7 +503,7 @@ var
 
 Configure key-scoped fields just like [global fields](#configuration-options-fields).
 
-### expiry <a name="key-expiry"></a>
+#### expiry <a name="key-expiry"></a>
 
 Optional. It is the key's time to live.
 
@@ -480,7 +511,7 @@ It can be a reference to a [global expiry](#configuration-options-expiries) or t
 
 Configure key-scoped expiries just like [global expiries](#configuration-options-expiries).
 
-#### Refresh <a name="key-expiry-refresh"></a>
+##### Refresh <a name="key-expiry-refresh"></a>
 
 In the following example `aKey` with an expiry of `1 day` is registered to a `RedisKeychain` instance. The key is also bound to a client instance.
 
@@ -524,7 +555,7 @@ aKey.send().set('value', function (error, reply) {
 });
 ```
 
-### client
+#### client
 
 Optional. It is an alias to a client instance registered to the same `RedisKeychain` instance.
 
@@ -566,7 +597,7 @@ Key-to-client binding feature is library agnostic: you can use your Redis client
 
 Key-to-client binding feature has been tested using [node_redis](https://github.com/mranney/node_redis) and [ioredis](https://github.com/luin/ioredis).
 
-### `Key#render` <a name="key-render"></a>
+#### `Key#render` <a name="key-render"></a>
 
 Invoke `Key#render` to render a key name template. Arguments to `Key#render` can be a list of field values or a single `Object` argument having field-value pairs.
 
@@ -600,7 +631,7 @@ console.log(aKey.render({ field1: 'value1', field2: 'value2' }));  // path:to:ke
 
 You can also invoke the shortcut method `Key#r()`.
 
-### `Key#send()` <a name="key-send"></a>
+#### `Key#send()` <a name="key-send"></a>
 
 Invoke `Key#send()` to send a command to Redis using the client instance bound to the key. Arguments to `Key#send()` can be a list of field values or a single `Object` argument having field-value pairs to render the key name template.
 
