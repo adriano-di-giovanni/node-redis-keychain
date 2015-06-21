@@ -1,5 +1,7 @@
 # RedisKeychain <a name="redis-keychain"></a>
 
+[![Coverage Status](https://coveralls.io/repos/adriano-di-giovanni/node-redis-keychain/badge.svg)](https://coveralls.io/r/adriano-di-giovanni/node-redis-keychain)
+
 RedisKeychain is a Node.js library for streamlining the configuration and maintenance of your Redis namespace.
 
 ## Features <a name="features"></a>

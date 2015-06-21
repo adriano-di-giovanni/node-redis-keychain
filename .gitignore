@@ -77,3 +77,4 @@ node_modules
 dump.rdb
 
 test/.flushall
+.coveralls.yml
