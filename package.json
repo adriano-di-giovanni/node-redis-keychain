@@ -1,6 +1,6 @@
 {
   "name": "node-redis-keychain",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Node.js library for streamlining the configuration and maintenance of your Redis namespace",
   "main": "index.js",
   "directories": {
@@ -24,7 +24,6 @@
   "dependencies": {
     "expiry-js": "~0.1.5",
     "node-redis-commands": "~0.1.4",
-    "underscore": "~1.8.3",
-    "validation-builder-js": "~0.0.2"
+    "underscore": "~1.8.3"
   }
 }
