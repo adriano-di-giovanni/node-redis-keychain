@@ -25,5 +25,20 @@
     "expiry-js": "~0.1.5",
     "node-redis-commands": "~0.1.4",
     "underscore": "~1.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adriano-di-giovanni/node-redis-keychain.git"
+  },
+  "keywords": [
+    "node",
+    "redis",
+    "template",
+    "expiry",
+    "client"
+  ],
+  "bugs": {
+    "url": "https://github.com/adriano-di-giovanni/node-redis-keychain/issues"
+  },
+  "homepage": "https://github.com/adriano-di-giovanni/node-redis-keychain"
 }
