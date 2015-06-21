@@ -1,6 +1,6 @@
 {
   "name": "node-redis-keychain",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Node.js library for streamlining the configuration and maintenance of your Redis namespace",
   "main": "index.js",
   "directories": {
