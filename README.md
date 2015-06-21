@@ -1,6 +1,5 @@
 # RedisKeychain <a name="redis-keychain"></a>
-
-[![Coverage Status](https://coveralls.io/repos/adriano-di-giovanni/node-redis-keychain/badge.svg)](https://coveralls.io/r/adriano-di-giovanni/node-redis-keychain)
+[![NPM version][npm-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 RedisKeychain is a Node.js library for streamlining the configuration and maintenance of your Redis namespace.
 
@@ -688,3 +687,12 @@ $ npm test
 ## License <a name="license"></a>
 
 The project is licensed under the MIT license.
+
+[npm-url]:https://npmjs.org/package/node-redis-keychain
+[npm-image]:http://img.shields.io/npm/v/node-redis-keychain.svg
+[david-dm-url]:https://david-dm.org/adriano-di-giovanni/node-redis-keychain
+[david-dm-image]:https://david-dm.org/adriano-di-giovanni/node-redis-keychain.svg
+[david-dm-dev-url]:https://david-dm.org/adriano-di-giovanni/node-redis-keychain#info=devDependencies
+[david-dm-dev-image]:https://david-dm.org/adriano-di-giovanni/node-redis-keychain/dev-status.svg
+[coveralls-url]:https://coveralls.io/r/adriano-di-giovanni/node-redis-keychain
+[coveralls-image]:https://coveralls.io/repos/adriano-di-giovanni/node-redis-keychain/badge.svg
