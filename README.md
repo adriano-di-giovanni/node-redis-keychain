@@ -1,5 +1,6 @@
 # RedisKeychain <a name="redis-keychain"></a>
 [![NPM version][npm-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Coverage Status][coveralls-image]][coveralls-url]
+[![Build Status](https://travis-ci.org/adriano-di-giovanni/node-redis-keychain.svg?branch=master)](https://travis-ci.org/adriano-di-giovanni/node-redis-keychain)
 
 RedisKeychain is a Node.js library for streamlining the configuration and maintenance of your Redis namespace.
 
