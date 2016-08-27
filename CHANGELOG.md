@@ -11,3 +11,10 @@
 ### Changed
 
 * Fixed package definition
+
+## 0.1.3 - 2016-08-27 - [diff](https://github.com/adriano-di-giovanni/node-redis-keychain/compare/v0.1.2...v0.1.3)
+
+### Changed
+
+* Fixed redis issue
+* Updated dependencies
